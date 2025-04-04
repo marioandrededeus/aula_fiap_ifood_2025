@@ -31,13 +31,18 @@ with st.expander('Descrição do App', expanded = False):
 
 st.sidebar.write('teste sidebar')
 with st.sidebar:
-    c1, c2 = st.columns(2)
+    c1, c2 = st.columns([.3, .7])
     c1.image('./images/logo_fiap.png', width = 100)
     c2.write('')
     c2.subheader('Auto ML - Fiap [v1]')
 
     # database = st.selectbox('Fonte dos dados de entrada (X):', ('CSV', 'Online'))
-    database = st.radio('Fonte dos dados de entrada (X):', ('CSV', 'Online'))
+    database = st.radio('Fonte dos dados de entrada (X):', ('CSV', 'Online'), horizontal = True)
+    # st.toggle('Fonte dos dados de entrada (X)')
+    # st.checkbox('Fonte dos dados de entrada (X):', value = True)
+    # st.selectbox('Fonte dos dados de entrada (X):', ['CSV', 'Online'])
+    # st.multiselect('Fonte dos dados de entrada (X):', ['CSV', 'Online'])
+
 
     if database == 'CSV':
         st.info('Upload do CSV')
@@ -65,7 +70,7 @@ if database == 'CSV':
             st.dataframe(Xtest.head(qtd_linhas))
 
         with st.expander('Visualizar Predições:', expanded = True):
-            c1, _, c2, c3 = st.columns([2,.5,1,1])
+            c1, _, c2, c3 = st.columns([.5,.1,.2,.2])
             treshold = c1.slider('Treshold (ponto de corte para considerar predição como True)',
                                 min_value = 0.0,
                                 max_value = 1.0,
