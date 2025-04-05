@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from pycaret.classification import load_model, predict_model
+from pycaret.classification import * #load_model, predict_model
 
 st.set_page_config( page_title = 'Simulador - Case Ifood',
                     page_icon = './images/logo_fiap.png',
